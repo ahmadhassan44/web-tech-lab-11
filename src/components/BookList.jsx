@@ -34,11 +34,11 @@ const BookList = () => {
     }));
   };
 
+  // Add the return statement that was missing
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <div className="max-w-4xl mx-auto p-4 bg-white shadow rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Book List</h2>
       
-      {/* Add Book Form */}
       <form onSubmit={handleAddBook} className="mb-6 p-4 bg-gray-100 rounded-lg">
         <h3 className="text-lg font-semibold mb-3">Add New Book</h3>
         <div className="space-y-3">
@@ -67,7 +67,6 @@ const BookList = () => {
         </div>
       </form>
 
-      {/* Book List */}
       <div className="space-y-4">
         {books.map(book => (
           <div key={book.id} className="p-4 border rounded-lg flex justify-between items-center">
@@ -88,4 +87,4 @@ const BookList = () => {
   );
 };
 
-export default BookList; 
+export default BookList;
