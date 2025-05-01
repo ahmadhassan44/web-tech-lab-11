@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { PenLine, User } from 'lucide-react';
 
 function ProfileEditor() {
@@ -7,13 +7,11 @@ function ProfileEditor() {
         age: ''
     });
     
-    const nameRef = useRef();
-    const ageRef = useRef();
-    
     const handleSubmit = () => {
         setProfile({
-            name: nameRef.current.value,
-            age: ageRef.current.value
+            ...profile,
+            name: document.getElementById('name').value,
+            age: document.getElementById('age').value
         });
     };
     
@@ -43,8 +41,6 @@ function ProfileEditor() {
                         type="text"
                         name="name"
                         id="name"
-                        ref={nameRef}
-                        defaultValue={profile.name}
                         className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-3 pr-12 sm:text-sm border-gray-300 rounded-md p-2 border"
                         placeholder="Enter your name"
                       />
@@ -58,8 +54,6 @@ function ProfileEditor() {
                         name="age"
                         type='number'
                         id="age"
-                        ref={ageRef}
-                        defaultValue={profile.age}
                         className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-3 pr-12 sm:text-sm border-gray-300 rounded-md p-2 border"
                         placeholder="Enter your age"
                         min="0"
