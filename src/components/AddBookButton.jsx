@@ -3,7 +3,7 @@ import { Plus, BookOpen } from 'lucide-react';
 import { useRole } from '../contexts/RoleContext';
 import AddBookForm from './AddBookForm';
 
-function AddBookComponent({ onAddBook }) {
+function AddBookButton({ onAddBook }) {
   const { role } = useRole();
   const [showForm, setShowForm] = useState(false);
   
@@ -35,4 +35,4 @@ function AddBookComponent({ onAddBook }) {
   );
 }
 
-export default AddBookComponent;
+export default AddBookButton;
