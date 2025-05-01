@@ -83,7 +83,6 @@ function App() {
             />
           ) : (
             <div className="h-full flex items-center justify-center">
-              <p className="text-amber-200 text-xl font-serif">Select a book to view details</p>
             </div>
           )}
         </div>
