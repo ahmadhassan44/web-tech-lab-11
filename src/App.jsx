@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import BookList from './components/BookList';
 import AddBookForm from './components/AddBookForm';
@@ -27,46 +27,8 @@ function App() {
       author: "F. Scott Fitzgerald",
       year: 1925
     },
-    {
-      id: 4,
-      title: "One Hundred Years of Solitude",
-      author: "Gabriel García Márquez",
-      year: 1967
-    },
-    {
-      id: 5,
-      title: "Moby-Dick",
-      author: "Herman Melville",
-      year: 1851
-    },
-    {
-      id: 6,
-      title: "War and Peace",
-      author: "Leo Tolstoy",
-      year: 1869
-    },
-    {
-      id: 7,
-      title: "The Odyssey",
-      author: "Homer"
-    },
-    {
-      id: 8,
-      title: "Crime and Punishment",
-      author: "Fyodor Dostoevsky",
-      year: 1866
-    },
-    {
-      id: 9,
-      title: "Jane Eyre",
-      author: "Charlotte Brontë",
-      year: 1847
-    },
-    {
-      id: 10,
-      title: "The Divine Comedy",
-      author: "Dante Alighieri"
-    }
+   
+ 
   ]);
 
   const handleAddBook = (newBook) => {
@@ -75,8 +37,9 @@ function App() {
   };
 
   const handleEditBook = (book) => {
-    setEditingBook(book);
+    // This will close the add form and update the editing book
     setShowAddForm(false);
+    setEditingBook(book);
   };
 
   const handleSaveEdit = (editedBook) => {
@@ -113,6 +76,7 @@ function App() {
             />
           ) : editingBook ? (
             <EditBookComponent 
+              key={editingBook.id} 
               book={editingBook}
               onSave={handleSaveEdit}
               onCancel={() => setEditingBook(null)}
