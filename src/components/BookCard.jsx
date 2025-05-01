@@ -2,14 +2,20 @@ import { Pencil, Trash2, BookOpen } from 'lucide-react';
 import { useState } from 'react';
 import { useRole } from '../contexts/RoleContext';
 
-function BookCard({ book, onEditBook }) {
-  const [isEditing, setIsEditing] = useState(false);
+function BookCard({ book, onEdit, onDelete }) {
   const { role } = useRole();
   const isAdmin = role === 'admin';
   
+  const handleEdit = () => {
+    if (onEdit) {
+      onEdit(book);
+    }
+  };
+  
   const handleDelete = () => {
-    // Handle delete logic
-    console.log('Delete book:', book.id);
+    if (onDelete) {
+      onDelete(book.id);
+    }
   };
 
   return (
@@ -27,7 +33,7 @@ function BookCard({ book, onEditBook }) {
         {isAdmin && (
           <div className="flex space-x-2">
             <button
-              onClick={() => setIsEditing(true)}
+              onClick={handleEdit}
               className="p-1 rounded-full bg-gray-800 text-amber-400 hover:text-amber-300 hover:bg-gray-700 transition-colors duration-200"
               aria-label="Edit book"
             >
@@ -44,7 +50,6 @@ function BookCard({ book, onEditBook }) {
         )}
       </div>
       
-      {/* Decorative elements */}
       <div className="mt-4 pt-3 border-t border-amber-900 flex justify-between items-center">
         <div className="flex items-center">
           <BookOpen size={16} className="text-amber-700 mr-1" />
